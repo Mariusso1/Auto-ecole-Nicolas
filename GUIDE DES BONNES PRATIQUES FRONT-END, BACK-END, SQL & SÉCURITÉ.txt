@@ -1,0 +1,54 @@
+=======================================================================
+GUIDE DES BONNES PRATIQUES : FRONT-END, BACK-END, SQL & SÉCURITÉ
+Version : 1.0 | Date : 2026
+Source : OWASP, MDN Web Docs, SQL Standard Guidelines
+=======================================================================
+
+--- 1. FRONT-END (HTML, CSS, JS) ---
+
+* Sémantique HTML : Utilisez les balises appropriées (<main>, <nav>, <article>, <button> au lieu de <div>) pour l'accessibilité (SEO et lecteurs d'écran).
+* Performance des Images : Utilisez des formats modernes (WebP/Avif) et l'attribut loading="lazy" pour les images hors écran.
+* Mobile-First : Concevez vos styles pour les petits écrans d'abord, puis utilisez les @media queries pour les écrans plus larges.
+* DRY (Don't Repeat Yourself) : Créez des composants réutilisables (en React, Vue, ou Web Components) pour éviter la duplication de code.
+* Gestion d'état : Ne stockez pas d'informations sensibles (mots de passe, clés secrètes) dans le LocalStorage ou la mémoire JS.
+
+--- 2. BACK-END (Logique & API) ---
+
+* Validation des entrées : Ne faites JAMAIS confiance aux données provenant du client. Validez le type, la longueur et le format (Regex) de chaque champ.
+* Codes de statut HTTP : Utilisez les bons codes (200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 404 Not Found, 500 Internal Server Error).
+* Statelessness : Préférez les API REST sans état. Utilisez des JWT (JSON Web Tokens) ou des sessions sécurisées pour l'authentification.
+* Logs & Monitoring : Enregistrez les erreurs (sans logger de données sensibles) pour pouvoir déboguer rapidement en production.
+* Environnement : Séparez strictement les configurations (Dev, Staging, Prod) via des fichiers .env ignorés par Git.
+
+--- 3. SQL & BASES DE DONNÉES ---
+
+* Requêtes Préparées : Utilisez systématiquement des paramètres (bind parameters) pour éviter les injections SQL.
+* Normalisation : Évitez la redondance des données en structurant vos tables (1NF, 2NF, 3NF).
+* Indexation : Créez des index sur les colonnes souvent utilisées dans les clauses WHERE pour accélérer les recherches, mais avec parcimonie (cela ralentit les écritures).
+* Principe du moindre privilège : L'utilisateur SQL de votre application ne doit pas avoir les droits "ROOT" ou "DROP TABLE". Donnez-lui uniquement SELECT, INSERT, UPDATE, DELETE.
+* Sauvegardes : Automatisez des backups réguliers et testez la restauration.
+
+--- 4. CYBERSÉCURITÉ (Points Critiques) ---
+
+* HTTPS Partout : Utilisez des certificats SSL/TLS pour chiffrer les données en transit.
+* En-têtes de sécurité (HSTS, CSP) : Implémentez une Content Security Policy (CSP) pour bloquer l'exécution de scripts non autorisés (XSS).
+* Hachage des mots de passe : N'enregistrez jamais de mots de passe en clair. Utilisez des algorithmes robustes comme Argon2 ou Bcrypt (avec un sel/salt).
+* Gestion des Cookies : Utilisez les flags 'HttpOnly' (interdit l'accès JS), 'Secure' (uniquement via HTTPS) et 'SameSite=Strict' (protection CSRF).
+* Rate Limiting : Limitez le nombre de requêtes par IP pour éviter les attaques par force brute (Brute Force) ou par déni de service (DoS).
+
+--- 5. LES ERREURS SIMPLES À ÉVITER (Checklist) ---
+
+[ ] ERREUR : Pousser le dossier 'node_modules' ou les fichiers '.env' sur GitHub.
+    -> FIX : Utilisez un fichier .gitignore.
+[ ] ERREUR : Utiliser 'admin'/'admin' ou des mots de passe faibles pour les comptes de test.
+    -> FIX : Utilisez un gestionnaire de mots de passe et des secrets complexes dès le dev.
+[ ] ERREUR : Exposer des clés API de services tiers dans le code JavaScript Front-end.
+    -> FIX : Faites transiter l'appel par votre propre serveur (Backend Proxy).
+[ ] ERREUR : Afficher des messages d'erreur détaillés en production (ex: erreurs SQL complètes).
+    -> FIX : Affichez un message générique à l'utilisateur et loggez l'erreur détaillée sur le serveur.
+[ ] ERREUR : Oublier de mettre à jour les dépendances (bibliothèques).
+    -> FIX : Utilisez des outils comme 'npm audit' ou Snyk pour surveiller les vulnérabilités.
+
+=======================================================================
+FIN DU DOCUMENT
+=======================================================================
