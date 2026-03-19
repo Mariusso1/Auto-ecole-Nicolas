@@ -1,0 +1,212 @@
+---
+// src/pages/contact.astro
+import Layout from '../layouts/Layout.astro';
+
+const contactInfo = {
+  phone: '05 63 00 00 00',
+  email: 'contact@autoecolenicolascastres.com',
+  address: 'Castres, Tarn (81)',
+  // Note: Add actual address when available
+};
+---
+
+<Layout title="Contact" description="Contactez l'Auto-École Nicolas à Castres">
+  <section class="page-header">
+    <div class="container">
+      <h1>Contactez-nous</h1>
+      <p>Nous sommes disponibles pour répondre à vos questions</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Nos coordonnées</h2>
+          
+          <div class="contact-card">
+            <div class="contact-card__icon">📞</div>
+            <h3>Téléphone</h3>
+            <p>
+              <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}>
+                {contactInfo.phone}
+              </a>
+            </p>
+            <p class="contact-card__note">Disponible du lundi au samedi</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card__icon">✉️</div>
+            <h3>Email</h3>
+            <p>
+              <a href={`mailto:${contactInfo.email}`}>
+                {contactInfo.email}
+              </a>
+            </p>
+            <p class="contact-card__note">Réponse sous 24h</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card__icon">📍</div>
+            <h3>Adresse</h3>
+            <p>{contactInfo.address}</p>
+            <p class="contact-card__note">Castres, Tarn</p>
+          </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="contact-details">
+          <h2>Venez nous rendre visite</h2>
+          <p>
+            Notre équipe vous accueille avec plaisir dans nos locaux. 
+            N'hésitez pas à passer nous voir pour discuter de votre projet 
+            d'obtention du permis de conduire.
+          </p>
+          
+          <div class="contact-advantages">
+            <h3>Pourquoi nous choisir ?</h3>
+            <ul>
+              <li>Écoute et personnalisation</li>
+              <li>Flexibilité des horaires</li>
+              <li>Approche pédagogique bienveillante</li>
+              <li>Taux de réussite élevé</li>
+            </ul>
+          </div>
+
+          <div class="contact-cta">
+            <a href="tel:+33563000000" class="btn btn--primary">
+              Appeler maintenant
+            </a>
+            <a href={`mailto:${contactInfo.email}`} class="btn btn--outline">
+              Envoyer un email
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map placeholder -->
+  <section class="section section--light">
+    <div class="container">
+      <h2>Notre localisation</h2>
+      <p class="map-note">
+        Carte interactive à venir - localisation à Castres, Tarn (81)
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-navy) 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-header p {
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .contact-info h2,
+  .contact-details h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+  }
+
+  .contact-card__icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .contact-card h3 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .contact-card a {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .contact-card__note {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-xs);
+    margin-bottom: 0;
+  }
+
+  .contact-details p {
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-advantages {
+    background-color: var(--color-light-gray);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-advantages h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-advantages ul {
+    list-style: disc;
+    padding-left: var(--spacing-md);
+  }
+
+  .contact-advantages li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-light);
+  }
+
+  .contact-cta {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  .map-note {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: var(--spacing-xl);
+    background-color: var(--color-light-gray);
+    border-radius: var(--radius-md);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-cta {
+      flex-direction: column;
+    }
+  }
+</style>

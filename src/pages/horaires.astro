@@ -1,0 +1,168 @@
+---
+// src/pages/horaires.astro
+import Layout from '../layouts/Layout.astro';
+
+const openingHours = [
+  { day: 'Lundi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
+  { day: 'Mardi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
+  { day: 'Mercredi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
+  { day: 'Jeudi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
+  { day: 'Vendredi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
+  { day: 'Samedi', morning: '09h00 - 12h00', afternoon: 'Fermé', closed: false },
+  { day: 'Dimanche', morning: 'Fermé', afternoon: 'Fermé', closed: true },
+];
+---
+
+<Layout title="Horaires" description="Horaires d'ouverture de l'Auto-École Nicolas à Castres">
+  <section class="page-header">
+    <div class="container">
+      <h1>Nos horaires d'ouverture</h1>
+      <p>Venez nous rendre visite pendant nos heures d'ouverture</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="hours-table-wrapper">
+        <table class="hours-table">
+          <thead>
+            <tr>
+              <th scope="col">Jour</th>
+              <th scope="col">Matin</th>
+              <th scope="col">Après-midi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {openingHours.map((day) => (
+              <tr class:list={{ 'hours-table__row--closed': day.closed }}>
+                <td class="hours-table__day">{day.day}</td>
+                <td>{day.morning}</td>
+                <td>{day.afternoon}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hours-note">
+        <h3>Informations pratiques</h3>
+        <ul>
+          <li>Les horaires peuvent varier pendant les vacances scolaires</li>
+          <li>Les leçons de conduite sont possibles en dehors des horaires d'ouverture sur rendez-vous</li>
+          <li>Contactez-nous pour toute demande particulière</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container">
+      <h2>Cours de code</h2>
+      <div class="code-schedule">
+        <p>
+          Les cours de code sont dispensés <strong>du lundi au samedi</strong> selon le planning ci-dessus.
+        </p>
+        <p>
+          Des sessions spécifiques sont organisées régulièrement pour vous aider à préparer 
+          l'examen théorique dans les meilleures conditions.
+        </p>
+        <a href="/code" class="btn btn--primary">En savoir plus sur les cours de code</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-navy) 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-header p {
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .hours-table-wrapper {
+    max-width: 600px;
+    margin: 0 auto var(--spacing-lg);
+    overflow-x: auto;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .hours-table th,
+  .hours-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hours-table th {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  .hours-table__row--closed {
+    background-color: var(--color-light-gray);
+  }
+
+  .hours-table__row--closed td {
+    color: var(--color-text-light);
+  }
+
+  .hours-table__day {
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .hours-note {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    background-color: var(--color-light-gray);
+    border-radius: var(--radius-md);
+  }
+
+  .hours-note h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hours-note ul {
+    list-style: disc;
+    padding-left: var(--spacing-md);
+    color: var(--color-text-light);
+  }
+
+  .hours-note li {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .code-schedule {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .code-schedule p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+  }
+</style>

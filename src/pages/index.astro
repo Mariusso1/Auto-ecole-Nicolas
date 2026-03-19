@@ -1,0 +1,295 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
+
+const benefits = [
+  {
+    icon: '🎯',
+    title: 'Formation personnalisée',
+    description: 'Un suivi adapté à votre rythme et vos disponibilités'
+  },
+  {
+    icon: '⏰',
+    title: 'Horaires flexibles',
+    description: 'Des créneaux qui s\'adaptent à votre emploi du temps'
+  },
+  {
+    icon: '💯',
+    title: 'Taux de réussite élevé',
+    description: 'Des résultats concrets pour votre permis de conduire'
+  },
+  {
+    icon: '👨‍🏫',
+    title: 'Moniteurs expérimentés',
+    description: 'Une équipe pédagogique incontourn et motivée'
+  }
+];
+---
+
+<Layout title="Accueil">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero__container">
+      <div class="hero__content">
+        <h1 class="hero__title">Votre auto-école à Castres</h1>
+        <p class="hero__subtitle">
+          Obtenez votre permis de conduire en toute confiance avec Auto-École Nicolas. 
+          Des moniteurs expérimentés à votre service.
+        </p>
+        <div class="hero__cta">
+          <a href="/contact" class="btn btn--primary">Contactez-nous</a>
+          <a href="#avis" class="btn btn--outline">Voir les avis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="section">
+    <div class="container">
+      <div class="intro">
+        <h2>Bienvenue chez Auto-École Nicolas</h2>
+        <p class="intro__text">
+          Située à Castres, Auto-École Nicolas vous accompagne dans votre démarche 
+          d'obtention du permis de conduire. Que vous soyez débutants ou déjà expérimenté, 
+          notre équipe de moniteurs qualifiés vous offre une formation de qualité 
+          adaptée à vos besoins.
+        </p>
+        <p class="intro__text">
+          Nous proposons des leçons de conduite flexibles et des cours de code 
+          pour vous préparer efficacement à l'examen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section section--light">
+    <div class="container">
+      <h2 class="section-title">Pourquoi choisir Auto-École Nicolas ?</h2>
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <div class="benefit-card">
+            <div class="benefit-card__icon">{benefit.icon}</div>
+            <h3 class="benefit-card__title">{benefit.title}</h3>
+            <p class="benefit-card__description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews -->
+  <GoogleReviews />
+
+  <!-- Services Preview -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Nos services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Permis B</h3>
+          <p>
+            Formation complète pour l'obtention du permis de conduire catégorie B. 
+            Cours pratiques adaptés à votre niveau.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Cours de code</h3>
+          <p>
+            Préparation théorique complète à l'examen du code de la route. 
+            Supports pédagogiques et simulations d'examen.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Conduite accompagnée</h3>
+          <p>
+            Formation AAC (Conduite Accompagnée) dès 15 ans pour une 
+            expérience riche et sécurisante.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Prêt à commencer ?</h2>
+      <p>Contactez-nous dès aujourd'hui pour planifier votre première leçon</p>
+      <a href="/contact" class="btn btn--primary">Nous contacter</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-navy) 100%);
+    padding: var(--spacing-xl) 0;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__content {
+    max-width: 700px;
+    color: var(--color-white);
+  }
+
+  .hero__title {
+    font-size: 3rem;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.9;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  .hero__cta .btn--primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+
+  .hero__cta .btn--primary:hover {
+    background-color: var(--color-light-gray);
+  }
+
+  .hero__cta .btn--outline {
+    border-color: var(--color-white);
+    color: var(--color-white);
+  }
+
+  .hero__cta .btn--outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+
+  /* Introduction */
+  .intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro__text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+  }
+
+  /* Section Title */
+  .section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .benefit-card {
+    text-align: center;
+    padding: var(--spacing-md);
+  }
+
+  .benefit-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .benefit-card__title {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .benefit-card__description {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .service-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-card h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .service-card p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background-color: var(--color-navy);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero__title {
+      font-size: 2rem;
+    }
+
+    .hero__subtitle {
+      font-size: 1rem;
+    }
+
+    .hero__cta {
+      flex-direction: column;
+    }
+
+    .benefits-grid,
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
