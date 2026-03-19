@@ -3,12 +3,12 @@
 import Layout from '../layouts/Layout.astro';
 
 const openingHours = [
-  { day: 'Lundi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
-  { day: 'Mardi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
-  { day: 'Mercredi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
-  { day: 'Jeudi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
-  { day: 'Vendredi', morning: '09h00 - 12h00', afternoon: '14h00 - 18h00', closed: false },
-  { day: 'Samedi', morning: '09h00 - 12h00', afternoon: 'Fermé', closed: false },
+  { day: 'Lundi', morning: 'Fermé', afternoon: 'Fermé', closed: true },
+  { day: 'Mardi', morning: 'Fermé', afternoon: 'Fermé', closed: true },
+  { day: 'Mercredi', morning: 'Fermé', afternoon: '17h00 - 19h00', closed: false },
+  { day: 'Jeudi', morning: 'Fermé', afternoon: 'Fermé', closed: true },
+  { day: 'Vendredi', morning: 'Fermé', afternoon: '17h00 - 18h00', closed: false },
+  { day: 'Samedi', morning: '11h00 - 12h00', afternoon: 'Fermé', closed: false },
   { day: 'Dimanche', morning: 'Fermé', afternoon: 'Fermé', closed: true },
 ];
 ---
@@ -47,8 +47,8 @@ const openingHours = [
       <div class="hours-note">
         <h3>Informations pratiques</h3>
         <ul>
-          <li>Les horaires peuvent varier pendant les vacances scolaires</li>
-          <li>Les leçons de conduite sont possibles en dehors des horaires d'ouverture sur rendez-vous</li>
+          <li>Bureau ouvert uniquement le mercredi, vendredi et samedi</li>
+          <li>Les leçons de conduite sont possibles sur rendez-vous en dehors des horaires d'ouverture</li>
           <li>Contactez-nous pour toute demande particulière</li>
         </ul>
       </div>
@@ -66,7 +66,7 @@ const openingHours = [
           Des sessions spécifiques sont organisées régulièrement pour vous aider à préparer 
           l'examen théorique dans les meilleures conditions.
         </p>
-        <a href="/code" class="btn btn--primary">En savoir plus sur les cours de code</a>
+        <a href="/services" class="btn btn--primary">En savoir plus sur les cours de code</a>
       </div>
     </div>
   </section>

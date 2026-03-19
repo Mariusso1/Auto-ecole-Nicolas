@@ -1,0 +1,250 @@
+---
+// src/pages/services.astro
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    title: 'Permis B',
+    description: 'Formation complète pour l\'obtention du permis de conduire catégorie B. Cours pratiques adaptés à votre niveau, du débutants au conducteur expérimenté.',
+    icon: '🚗'
+  },
+  {
+    title: 'Conduite accompagnée',
+    description: 'Formation AAC (Conduite Accompagnée) dès 15 ans pour une expérience riche et sécurisante. Vous pouvez également optter pour la conduite supervisée.',
+    icon: '👥'
+  },
+  {
+    title: 'Perfectionnement',
+    description: 'Vous avez déjà votre permis mais vous voulez gagner en confiance ? Des leçons de perfectionnement sont disponibles pour améliorer vos compétences.',
+    icon: '⭐'
+  },
+  {
+    title: 'Cours de code',
+    description: 'Préparation théorique complète à l\'examen du code de la route. Supports pédagogiques, tests en conditions réelles et suivi personnalisé.',
+    icon: '📚'
+  }
+];
+---
+
+<Layout title="Nos services" description="Les services proposés par l'Auto-École Nicolas à Castres">
+  <section class="page-header">
+    <div class="container">
+      <h1>Nos services</h1>
+      <p>Des formations adaptées à vos besoins</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="intro">
+        <h2>Une approche personnalisée</h2>
+        <p>
+          Chez Auto-École Nicolas, nous adaptons notre enseignement à votre rythme et vos objectifs. 
+          Nicolas Puyuelo, moniteur expérimenté, vous accompagne personnellement dans votre parcours vers le permis de conduire.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        {services.map((service) => (
+          <article class="service-card">
+            <div class="service-card__icon">{service.icon}</div>
+            <h3 class="service-card__title">{service.title}</h3>
+            <p class="service-card__description">{service.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container">
+      <h2>Pourquoi choisir Auto-École Nicolas ?</h2>
+      <div class="advantages">
+        <div class="advantage">
+          <div class="advantage__icon">👨‍🏫</div>
+          <h3>Moniteur expérimenté</h3>
+          <p>Nicolas Puyuelo vous accompagne avec patience et professionnalisme</p>
+        </div>
+        <div class="advantage">
+          <div class="advantage__icon">⏰</div>
+          <h3>Flexibilité</h3>
+          <p>Horaires adaptés à vos disponibilités</p>
+        </div>
+        <div class="advantage">
+          <div class="advantage__icon">📍</div>
+          <h3>Local à Castres</h3>
+          <p>Situé au 15 Bd des Docteurs Sicard, 81100 Castres</p>
+        </div>
+        <div class="advantage">
+          <div class="advantage__icon">💯</div>
+          <h3>Approche bienveillante</h3>
+          <p>Un accompagnement adapté à chaque élève</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Prêt à commencer ?</h2>
+        <p>Contactez-nous pour discuter de votre projet et planifier votre première leçon</p>
+        <div class="cta-box__buttons">
+          <a href="/contact" class="btn btn--primary">Nous contacter</a>
+          <a href="/horaires" class="btn btn--outline">Voir les horaires</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-navy) 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-header p {
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .intro {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+  }
+
+  .intro h2 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .intro p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .service-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .service-card__title {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .service-card__description {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Advantages */
+  .advantages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .advantage {
+    text-align: center;
+    padding: var(--spacing-md);
+  }
+
+  .advantage__icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .advantage h3 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .advantage p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  /* CTA Box */
+  .cta-box {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background-color: var(--color-navy);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+  }
+
+  .cta-box h2 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .cta-box p {
+    opacity: 0.9;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-box__buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+  }
+
+  .cta-box__buttons .btn--outline {
+    border-color: var(--color-white);
+    color: var(--color-white);
+  }
+
+  .cta-box__buttons .btn--outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-navy);
+  }
+
+  @media (max-width: 1024px) {
+    .advantages {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid,
+    .advantages {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-box__buttons {
+      flex-direction: column;
+    }
+  }
+</style>
