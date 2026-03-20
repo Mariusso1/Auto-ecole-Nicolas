@@ -21,8 +21,8 @@ const benefits = [
   },
   {
     icon: '👨‍🏫',
-    title: 'Moniteurs expérimentés',
-    description: 'Une équipe pédagogique incontourn et motivée'
+    title: 'Moniteur expérimenté',
+    description: 'Cela fait plus de x ans que Nicolas enseigne la conduite'
   }
 ];
 ---
@@ -35,7 +35,6 @@ const benefits = [
         <h1 class="hero__title">Votre auto-école à Castres</h1>
         <p class="hero__subtitle">
           Obtenez votre permis de conduire en toute confiance avec Auto-École Nicolas. 
-          Des moniteurs expérimentés à votre service.
         </p>
         <div class="hero__cta">
           <a href="/contact" class="btn btn--primary">Contactez-nous</a>
@@ -53,7 +52,7 @@ const benefits = [
         <p class="intro__text">
           Située à Castres, Auto-École Nicolas vous accompagne dans votre démarche 
           d'obtention du permis de conduire. Que vous soyez débutants ou déjà expérimenté, 
-          notre équipe de moniteurs qualifiés vous offre une formation de qualité 
+          Nicolas vous offre une formation de qualité 
           adaptée à vos besoins.
         </p>
         <p class="intro__text">
@@ -79,6 +78,23 @@ const benefits = [
       </div>
     </div>
   </section>
+
+  <!-- Car Image -->
+  <div class="car-showcase">
+    <div class="car-showcase__text car-showcase__text--left">
+      <span class="car-title">La voiture de notre auto-école</span>
+    </div>
+    <div class="car-showcase__image-wrapper">
+      <img 
+        src="/téléchargement.2.png" 
+        alt="Véhicule Auto-École Nicolas" 
+        class="car-image"
+      />
+    </div>
+    <div class="car-showcase__text car-showcase__text--right">
+      <span class="car-title">GOLF 7 Volkswagen</span>
+    </div>
+  </div>
 
   <!-- Google Reviews -->
   <GoogleReviews />
@@ -126,7 +142,9 @@ const benefits = [
 <style>
   /* Hero */
   .hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-navy) 100%);
+    background-image: linear-gradient(rgba(128, 128, 128, 0.5), rgba(128, 128, 128, 0.5)), url('/vue-rapprochee-etudiante-au-volant-voiture-instructeur-tenant-liste-controle_342744-689.avif');
+    background-size: cover;
+    background-position: center;
     padding: var(--spacing-xl) 0;
     min-height: 60vh;
     display: flex;
@@ -156,6 +174,12 @@ const benefits = [
   }
 
   .hero__cta .btn--primary {
+    background-color: transparent;
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+  }
+
+  .hero__cta .btn--primary:hover {
     background-color: var(--color-white);
     color: var(--color-primary);
   }
@@ -218,6 +242,80 @@ const benefits = [
   .benefit-card__description {
     font-size: 0.9rem;
     color: var(--color-text-light);
+  }
+
+  /* Car Image */
+  .car-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin: var(--spacing-lg) auto;
+    max-width: 1200px;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,249,250,0.9) 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .car-showcase__text {
+    flex: 1;
+    text-align: center;
+  }
+
+  .car-showcase__text--left {
+    text-align: right;
+  }
+
+  .car-showcase__text--right {
+    text-align: left;
+  }
+
+  .car-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+  }
+
+  .car-title strong {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-navy);
+  }
+
+  .car-showcase__image-wrapper {
+    flex: 0 0 auto;
+  }
+
+  .car-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .car-showcase {
+      flex-direction: column;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md);
+    }
+    
+    .car-showcase__text--left,
+    .car-showcase__text--right {
+      text-align: center;
+    }
+    
+    .car-title,
+    .car-title strong {
+      font-size: 1rem;
+    }
+    
+    .car-title strong {
+      font-size: 1.2rem;
+    }
   }
 
   /* Services Grid */
